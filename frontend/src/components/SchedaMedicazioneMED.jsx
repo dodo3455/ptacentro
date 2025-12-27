@@ -711,9 +711,14 @@ export const SchedaMedicazioneMED = ({ patientId, ambulatorio, schede, onRefresh
             >
               <CardHeader className="pb-2">
                 <div className="flex items-center justify-between">
-                  <CardTitle className="text-base">
-                    Scheda del {format(new Date(scheda.data_compilazione), "d MMMM yyyy", { locale: it })}
-                  </CardTitle>
+                  <div>
+                    <CardTitle className="text-base">
+                      Scheda del {format(new Date(scheda.data_compilazione), "d MMMM yyyy", { locale: it })}
+                    </CardTitle>
+                    {scheda.codice && (
+                      <p className="text-xs font-mono text-blue-600 mt-0.5">Cod: {scheda.codice}</p>
+                    )}
+                  </div>
                   <div className="flex gap-1">
                     <Button
                       variant="ghost"
