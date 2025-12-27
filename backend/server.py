@@ -206,6 +206,7 @@ class SchedaMedicazioneMED(BaseModel):
 class SchedaImpiantoPICCCreate(BaseModel):
     patient_id: str
     ambulatorio: Ambulatorio
+    scheda_type: str = "semplificata"  # semplificata o completa
     # Header
     presidio_ospedaliero: Optional[str] = None
     codice: Optional[str] = None
@@ -228,6 +229,8 @@ class SchedaImpiantoPICCCreate(BaseModel):
     braccio: Optional[str] = None
     vena: Optional[str] = None
     exit_site_cm: Optional[str] = None
+    tunnelizzazione: Optional[bool] = False
+    tunnelizzazione_note: Optional[str] = None
     valutazione_sito: Optional[bool] = None
     ecoguidato: Optional[bool] = None
     igiene_mani: Optional[bool] = None
@@ -255,6 +258,7 @@ class SchedaImpiantoPICC(BaseModel):
     id: str = Field(default_factory=lambda: str(uuid.uuid4()))
     patient_id: str
     ambulatorio: Ambulatorio
+    scheda_type: str = "semplificata"  # semplificata o completa
     # Header
     presidio_ospedaliero: Optional[str] = None
     codice: Optional[str] = None
@@ -277,6 +281,8 @@ class SchedaImpiantoPICC(BaseModel):
     braccio: Optional[str] = None
     vena: Optional[str] = None
     exit_site_cm: Optional[str] = None
+    tunnelizzazione: Optional[bool] = False
+    tunnelizzazione_note: Optional[str] = None
     valutazione_sito: Optional[bool] = None
     ecoguidato: Optional[bool] = None
     igiene_mani: Optional[bool] = None
