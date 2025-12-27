@@ -839,11 +839,11 @@ def generate_scheda_impianto_pdf(scheda: dict, patient: dict) -> bytes:
     italic_small = ParagraphStyle('ItalicSmall', fontSize=6, fontName='Helvetica-Oblique', textColor=colors.grey)
     
     def cb(checked):
-        """Checkbox helper - filled or empty with clear visual difference"""
+        """Checkbox helper - simple text representation"""
         if checked:
-            return "<font color='#000000'><b>[X]</b></font>"  # Checked - bold X in brackets
+            return "[X]"  # Checked
         else:
-            return "<font color='#666666'>[&nbsp;&nbsp;]</font>"  # Empty brackets
+            return "[  ]"  # Empty
     
     def cb_list(arr, val):
         """Check if value is in list"""
@@ -865,6 +865,9 @@ def generate_scheda_impianto_pdf(scheda: dict, patient: dict) -> bytes:
     patient_dob = patient.get('data_nascita', '') if patient else ""
     patient_sex = patient.get('sesso', '') if patient else ""
     
+    # Format sesso properly
+    sesso_display = f"{cb(patient_sex == 'M')} M   {cb(patient_sex == 'F')} F"
+    
     header_data = [
         [Paragraph("<b>Presidio Ospedaliero/Struttura Sanitaria:</b>", small_style), 
          get_val('presidio_ospedaliero'), 
@@ -877,7 +880,7 @@ def generate_scheda_impianto_pdf(scheda: dict, patient: dict) -> bytes:
          Paragraph("<b>Data di nascita:</b>", small_style), 
          patient_dob,
          Paragraph("<b>Sesso:</b>", small_style), 
-         f"{cb(patient_sex == 'M')} M  {cb(patient_sex == 'F')} F"],
+         sesso_display],
         [Paragraph("<b>Preso in carico dalla struttura dal:</b>", small_style), 
          get_val('data_presa_carico'),
          Paragraph("<b>Cartella Clinica n.:</b>", small_style), 
