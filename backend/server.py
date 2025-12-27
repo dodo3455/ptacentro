@@ -247,7 +247,7 @@ class SchedaImpiantoPICCCreate(BaseModel):
     ecoguidato: Optional[bool] = None
     igiene_mani: Optional[bool] = None
     precauzioni_barriera: Optional[bool] = None
-    disinfezione: List[str] = []
+    disinfezione: Optional[List[str]] = []
     sutureless_device: Optional[bool] = None
     medicazione_trasparente: Optional[bool] = None
     medicazione_occlusiva: Optional[bool] = None
@@ -299,7 +299,7 @@ class SchedaImpiantoPICC(BaseModel):
     ecoguidato: Optional[bool] = None
     igiene_mani: Optional[bool] = None
     precauzioni_barriera: Optional[bool] = None
-    disinfezione: List[str] = []
+    disinfezione: Optional[List[str]] = []
     sutureless_device: Optional[bool] = None
     medicazione_trasparente: Optional[bool] = None
     medicazione_occlusiva: Optional[bool] = None
