@@ -317,6 +317,11 @@ class SchedaImpiantoPICC(BaseModel):
     disinfettante: Optional[str] = None
     note: Optional[str] = None
     created_at: str = Field(default_factory=lambda: datetime.now(timezone.utc).isoformat())
+    
+    @field_validator('motivazione', 'disinfezione', 'allegati', mode='before')
+    @classmethod
+    def convert_none_to_list(cls, v):
+        return v if v is not None else []
 
 # Scheda Gestione Mensile PICC
 class SchedaGestionePICCCreate(BaseModel):
