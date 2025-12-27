@@ -671,6 +671,7 @@ export default function PatientDetailPage() {
               ambulatorio={ambulatorio}
               schede={schedeImpiantoPICC}
               onRefresh={fetchMedicalRecords}
+              patient={patient}
             />
           </TabsContent>
         )}
