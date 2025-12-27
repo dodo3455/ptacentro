@@ -638,7 +638,7 @@ export const SchedaMedicazioneMED = ({ patientId, ambulatorio, schede, onRefresh
                 accept="image/*"
                 capture="environment"
                 className="hidden"
-                onChange={(e) => handlePhotoUpload(e, isEditMode ? selectedScheda?.id : null)}
+                onChange={(e) => handlePhotoUpload(e, isEditMode ? selectedScheda?.id : null, isEditMode ? selectedScheda?.data_compilazione : formData.data_compilazione)}
                 disabled={uploadingPhoto}
               />
               <Button asChild variant="outline" size="sm" disabled={uploadingPhoto}>
@@ -653,7 +653,7 @@ export const SchedaMedicazioneMED = ({ patientId, ambulatorio, schede, onRefresh
                 type="file"
                 accept="image/*"
                 className="hidden"
-                onChange={(e) => handlePhotoUpload(e, isEditMode ? selectedScheda?.id : null)}
+                onChange={(e) => handlePhotoUpload(e, isEditMode ? selectedScheda?.id : null, isEditMode ? selectedScheda?.data_compilazione : formData.data_compilazione)}
                 disabled={uploadingPhoto}
               />
               <Button asChild variant="outline" size="sm" disabled={uploadingPhoto}>
@@ -665,9 +665,9 @@ export const SchedaMedicazioneMED = ({ patientId, ambulatorio, schede, onRefresh
             </label>
           </div>
           
-          {/* Photo preview - placeholder for now */}
+          {/* Photo info */}
           <p className="text-xs text-muted-foreground">
-            Le foto rimangono all'interno della scheda medicazione. Non vengono incluse nel PDF quando scarichi/stampi.
+            Le foto vengono salvate con data e codice identificativo della medicazione.
           </p>
         </div>
       </div>
