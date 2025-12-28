@@ -6,7 +6,6 @@ import { Toaster } from "@/components/ui/sonner";
 import { toast } from "sonner";
 
 // Pages
-import LoginPage from "@/pages/LoginPage";
 import SelectAmbulatorioPage from "@/pages/SelectAmbulatorioPage";
 import DashboardPage from "@/pages/DashboardPage";
 import AgendaPage from "@/pages/AgendaPage";
@@ -62,21 +61,6 @@ apiClient.interceptors.response.use(
 
 // Protected Route
 const ProtectedRoute = ({ children }) => {
-  const { user, loading } = useAuth();
-  const location = useLocation();
-
-  if (loading) {
-    return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div>
-      </div>
-    );
-  }
-
-  if (!user) {
-  return null;
-}
-
   return children;
 };
 
