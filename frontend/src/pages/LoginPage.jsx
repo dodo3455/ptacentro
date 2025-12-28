@@ -16,23 +16,29 @@ export default function LoginPage() {
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    setIsLoading(true);
+  e.preventDefault();
+  setIsLoading(true);
 
-    try {
-      const user = await login(username, password);
-      if (user.ambulatori.length === 1) {
-        navigate("/dashboard");
-      } else {
-        navigate("/select-ambulatorio");
-      }
-    } catch (error) {
-      // Error handled in login function
-    } finally {
-      setIsLoading(false);
-    }
-  };
+  try {
+    // ✅ LOGIN BYPASS (DEMO)
+    const demoUser = {
+      username: username || "Demo",
+      ambulatori: ["pta_centro"],
+      role: "infermiere",
+    };
 
+    // Simula login
+    localStorage.setItem("token", "demo-token");
+    localStorage.setItem("user", JSON.stringify(demoUser));
+
+    // Vai direttamente alla dashboard
+    navigate("/dashboard");
+  } catch (error) {
+    console.error("Errore login demo", error);
+  } finally {
+    setIsLoading(false);
+  }
+};
   return (
     <div className="min-h-screen flex items-center justify-center p-4 bg-gradient-to-br from-slate-50 to-blue-50">
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
