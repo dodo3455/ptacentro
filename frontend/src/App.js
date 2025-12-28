@@ -108,24 +108,21 @@ function AppContent() {
   const [ambulatorio, setAmbulatorio] = useState(null);
 
   useEffect(() => {
-    const token = localStorage.getItem("token");
-    const savedUser = localStorage.getItem("user");
-    const savedAmbulatorio = localStorage.getItem("ambulatorio");
+  const demoUser = {
+    username: "Demo",
+    role: "infermiere",
+    ambulatori: ["pta_centro"],
+  };
 
-    if (token && savedUser) {
-      try {
-        setUser(JSON.parse(savedUser));
-        if (savedAmbulatorio) {
-          setAmbulatorio(savedAmbulatorio);
-        }
-      } catch (e) {
-        localStorage.removeItem("token");
-        localStorage.removeItem("user");
-        localStorage.removeItem("ambulatorio");
-      }
-    }
-    setLoading(false);
-  }, []);
+  setUser(demoUser);
+  setAmbulatorio("pta_centro");
+
+  localStorage.setItem("token", "demo-token");
+  localStorage.setItem("user", JSON.stringify(demoUser));
+  localStorage.setItem("ambulatorio", "pta_centro");
+
+  setLoading(false);
+}, []);
 
   const login = async (username, password) => {
     try {
