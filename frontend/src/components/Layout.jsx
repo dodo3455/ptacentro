@@ -124,9 +124,9 @@ export const Layout = () => {
   };
 
   const handleLogout = () => {
-    logout();
-    navigate("/login");
-  };
+  logout();
+  navigate("/");
+};
 
   const toggleFullscreen = async () => {
     try {
