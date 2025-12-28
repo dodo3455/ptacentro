@@ -168,7 +168,6 @@ function AppContent() {
       <AmbulatorioContext.Provider value={{ ambulatorio, selectAmbulatorio }}>
         <BrowserRouter>
           <Routes>
-            <Route path="/login" element={<LoginPage />} />
             <Route
               path="/select-ambulatorio"
               element={
